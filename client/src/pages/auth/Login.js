@@ -16,9 +16,27 @@ const Login = ({history}) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if(auth && auth.token) history.push('/')
+        let intended = history.location.state;
+        if (intended) {
+        return;
+        } else {
+            if(auth && auth.token) history.push('/')
+        }
     }, [auth, history])
 
+    const roleBasedRedirect = (res) => {
+        // check if intended
+        let intended = history.location.state;
+        if (intended) {
+            history.push(intended.from);
+        } else {
+            if (auth && auth.token) {
+                history.push("/");
+            } else {
+                history.push("/login");
+            }
+        }
+    };
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -36,6 +54,8 @@ const Login = ({history}) => {
                 token: data
             }
         })
+
+        roleBasedRedirect(res)
 
     };
 

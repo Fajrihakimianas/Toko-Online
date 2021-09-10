@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Menu } from "antd";
+import { Menu, Badge } from "antd";
 import {
   AppstoreOutlined,
   UserOutlined,
   UserAddOutlined,
+  ShoppingCartOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -15,7 +16,7 @@ const Header = () => {
     
     const [current, setCurrent] = useState("home");
 
-    const { auth } = useSelector((state) => ({ ...state }));
+    const { auth, cart } = useSelector((state) => ({ ...state }));
     // console.log(auth.token)
 
     const dispatch = useDispatch();
@@ -44,6 +45,14 @@ const Header = () => {
                 </Link>
             </Item>
 
+            <Item key="cart" icon={<ShoppingCartOutlined />}>
+                <Link to="/cart">
+                    <Badge count={cart.length} offset={[9, 0]}>
+                        Cart
+                    </Badge>
+                </Link>
+            </Item>
+
             {
                 !auth && (
                     <>
@@ -64,6 +73,14 @@ const Header = () => {
             
             {
                 auth && (
+                    // <Item key="cart" icon={<ShoppingCartOutlined />}>
+                    //     <Link to="/cart">
+                    //         <Badge count={cart.length} offset={[9, 0]}>
+                    //             Cart
+                    //         </Badge>
+                    //     </Link>
+                    // </Item>,
+
                     <Item key="login" icon={<UserOutlined />} onClick={userLogout}>
                         Logout
                     </Item>

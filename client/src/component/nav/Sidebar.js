@@ -35,7 +35,7 @@ const Sidebar = () => {
                         <li className="nav-item">
                             {
                                 category.map(result => (
-                                    <Link className="nav-link category-color" to={`/${result}`}>
+                                    <Link className="nav-link category-color" to={`/category/${result}`}>
                                         {result}
                                     </Link>
                                 ))

@@ -2,13 +2,37 @@
     width: 130px;
     height: 100%;
     padding: 10px 0px;
-    position: fixed;
+    position: relative;
     margin-top: 15px;
-    margin-left: 20px;
+    margin-left: 2px;
 }
 
 .category-color {
     font-size: 12px;
     font-weight: 400;
     color: gray;
+}
+
+.grid {
+    margin-right: 80px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: -5px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.slider img {
+    height: 450px;
+    object-fit: contain;
+}
+
+.carousel .thumb.selected, .carousel .thumb:hover {
+    border: 1px solid rgb(211, 211, 211) !important;
+    border-radius: 10px;
+}
+
+.list-group-item {
+    border: none;
 }

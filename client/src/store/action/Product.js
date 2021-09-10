@@ -1,26 +1,27 @@
 import { types } from "store/types";
 
-const intialState = {
-    products: [],
+export const setProducts = (products) => {
+    return {
+        type: types.GET_PRODUCT_SUCCESS,
+        payload: products,
+    };
 };
   
-export const productsReducer = (state = intialState, { type, payload }) => {
-    switch (type) {
-        case types.GET_PRODUCT_SUCCESS:
-            return { ...state, products: payload };
-        default:
-            return state;
+export const selectedProduct = (product) => {
+    return {
+        type: types.GET_PRODUCT_ID_SUCCESS,
+        payload: product,
+    };
+};
+export const removeSelectedProduct = () => {
+    return {
+        type: types.REMOVE_SELECTED_PRODUCT,
+    };
+}
+
+export const productCategoryy = (productc) => {
+    return {
+        type: types.GET_PRODUCT_CATEGORY_SUCCESS,
+        payload: productc
     }
 };
-  
-// export const detailProductReducer = (state = {}, { type, payload }) => {
-//     console.log(type);
-//     switch (type) {
-//         case types.GET_PRODUCT_ID_SUCCESS:
-//             return { ...state, ...payload };
-//         // case ActionTypes.REMOVE_SELECTED_PRODUCT:
-//         //     return {};
-//         default:
-//             return state;
-//     }
-// };

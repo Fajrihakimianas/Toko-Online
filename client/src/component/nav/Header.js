@@ -41,22 +41,22 @@ const Header = () => {
         <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
             <Item key="home" icon={<AppstoreOutlined />}>
                 <Link to='/'>
-                    Home
+                    Online Store
                 </Link>
             </Item>
 
             <Item key="cart" icon={<ShoppingCartOutlined />}>
-                <Link to="/cart">
                     <Badge count={cart.length} offset={[9, 0]}>
-                        Cart
+                        <Link to="/cart">
+                            Cart
+                        </Link>
                     </Badge>
-                </Link>
             </Item>
 
             {
                 !auth && (
                     <>
-                        <Item key="register" icon={<UserAddOutlined />}>
+                        <Item key="register" icon={<UserAddOutlined />} className="float-right">
                             <Link to='/register'>
                                 Register
                             </Link>
@@ -70,10 +70,10 @@ const Header = () => {
                     </>
                 )
             }
-            
+
             {
                 auth && (
-                    <Item key="login" icon={<UserOutlined />} onClick={userLogout}>
+                    <Item key="login" icon={<UserOutlined />} onClick={userLogout} className="float-right">
                         Logout
                     </Item>
                 )

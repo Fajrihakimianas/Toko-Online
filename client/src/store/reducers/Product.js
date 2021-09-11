@@ -2,7 +2,6 @@ import { types } from "store/types";
 
 const intialState = {
     products: [],
-    productc: []
 };
   
 export const productsReducer = (state = intialState, { type, payload }) => {
@@ -26,11 +25,11 @@ export const productIdReducer = (state = {}, { type, payload }) => {
     }
 };
 
-export const productCategoryReducer = (state = intialState, { type, payload }) => {
+export const productCategoryReducer = (state = {}, { type, payload }) => {
     console.log(type);
     switch (type) {
         case types.GET_PRODUCT_CATEGORY_SUCCESS:
-            return { ...state, productc: payload };
+            return { ...state, ...payload };
         default:
             return state;
     }

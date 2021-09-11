@@ -1,14 +1,18 @@
-import React, { useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { Card } from 'antd';
 import { EyeOutlined } from "@ant-design/icons";
 import axios from 'axios';
 import { setProducts } from 'store/action/Product';
 import { Link } from 'react-router-dom';
+import Search from 'component/form/Search';
 
 const { Meta } = Card;
 
 const ProductList = () => {
+
+    const [keyword, setKeyword] = useState("");
 
     const product = useSelector((state) => state.products.products);
     console.log(product)
@@ -29,11 +33,15 @@ const ProductList = () => {
         dispatch(setProducts(data))
     }
 
+    const searched = (keyword) => (result) => result.title.toLowerCase().includes(keyword);
+
     return (
         <div className="container">
+            <Search keyword={keyword} setKeyword={setKeyword}/>
             <div className="grid">
+
                 {
-                    product.map(result => (
+                    product.filter(searched(keyword)).map(result => (
                         <Card
                             hoverable
                             style={{ width: '300px' }}
@@ -44,9 +52,6 @@ const ProductList = () => {
                                 <Link to={`/product/${result.id}`}>
                                     <EyeOutlined className="text-warning" /> <br /> View Product
                                 </Link>
-                                // <a>
-                                //     <ShoppingCartOutlined className="text-danger" /> <br /> Add to Cart
-                                // </a>,
                             ]}
                         >
                             <Meta 

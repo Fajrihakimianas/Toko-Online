@@ -28,7 +28,7 @@ const Sidebar = () => {
         <>
             <div className="sidebar">
                 <ul className="nav flex-column">
-                    <li className="nav-item mt-2">
+                    <li className="nav-item mt-3">
                         <h4>Category</h4>
                     </li>
                     <div style={{marginLeft:'-14px'}}>

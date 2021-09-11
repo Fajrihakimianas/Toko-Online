@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -17,7 +18,7 @@ const ProductDetail = () => {
 
     const [tooltip, setTooltip] = useState("Click to add");
 
-    const { cart } = useSelector((state) => ({ ...state }));
+    // const { cart } = useSelector((state) => ({ ...state }));
 
     const { id } = useParams();
     let product = useSelector((state) => state.productId);
@@ -84,7 +85,7 @@ const ProductDetail = () => {
                     <Card
                         actions={[
                             <Tooltip title={tooltip}>
-                                <a onClick={handleAddToCart}>
+                                <a href="/" onClick={handleAddToCart}>
                                     <ShoppingCartOutlined className="text-success" /> <br />
                                     Add to Cart
                                 </a>

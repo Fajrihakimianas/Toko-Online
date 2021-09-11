@@ -23,7 +23,7 @@ const ProductCart = ({p}) => {
             }
             // [1,2,3,4,5]
             cart.map((product, i) => {
-                if (product._id === p._id) {
+                if (product.id === p.id) {
                 cart.splice(i, 1);
                 }
             });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import ProductCart from './product/ProductCart';
 
@@ -34,19 +34,19 @@ const Cart = () => {
     return (
         <div className="container-fluid">
             <div className="row">
-                <div className="col-md-8">
+                <div className="col-md-8 mt-2">
                     <h4>Cart / {cart.length} Product</h4>
 
                     {!cart.length ? (
                         <p>
-                        No products in cart. <Link to="/shop">Continue Shopping.</Link>
+                        No products in cart. <Link to="/">Continue Shopping.</Link>
                         </p>
                     ) : (
                         showCartItems()
                     )}
                 </div>
 
-                    <div className="col-md-4">
+                    <div className="col-md-4 mt-2">
                         <h4>Order Summary</h4>
                         <hr />
                         <p>Products</p>
